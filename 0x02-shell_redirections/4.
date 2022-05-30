@@ -1,2 +1,2 @@
 #!/bin/bash
-tail etc/passwd Last lines of a file
+tail -b 10 etc/passwd Last lines of a file
