@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A simple while loop that displays a text multiople times
+
+i=0
+while ((i < 10))
+do
+	echo "Best School"
+	i=$((i + 1))
+done
