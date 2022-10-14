@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# A simple while loop with an if statement
+
+i=0
+while ((i < 10))
+do
+	echo "Best School"
+	i=$((i + 1))
+
+	if [[ $i -eq 9 ]]
+	then
+		echo "Hi"
+	fi
+done
