@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A simple until loop that prints a jtext multiple times
+
+i=0
+until [ $i == 10 ]
+do
+	echo "Best School"
+	i=$((i + 1))
+done
