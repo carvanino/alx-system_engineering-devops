@@ -3,4 +3,4 @@
 #+ Shows all processes for all users, Displays in user-oriented format
 #+ Show process hierarchy
 
-ps axu
+ps axuf
