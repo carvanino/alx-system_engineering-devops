@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Force kill the process even with the trap command
+
+pkill -9 -f 7-highlander
