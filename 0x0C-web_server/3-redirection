@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Configures a new Ubuntu machine to install nginx on web-01
+
+sudo apt update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo mkdir -p /var/www/html
+sudo chown -R "$USER":"$USER" /var/www/html
+echo "Hello World!" > /var/www/html/index.html
+echo "
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+
+}" | sudo tee /etc/nginx/sites-available/default
+sudo service nginx restart
