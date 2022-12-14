@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Connect to apache using a docker container
+
+sudo service apache2 status
