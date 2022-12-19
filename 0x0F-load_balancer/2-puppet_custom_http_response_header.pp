@@ -32,7 +32,7 @@ server {
 
 	index index.html index.htm index.nginx-debian.html;
 
-	add_header X-Served-By $HOSTNAME;
+	add_header X-Served-By \$hostname;
 
 	location /redirect_me {
 		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
