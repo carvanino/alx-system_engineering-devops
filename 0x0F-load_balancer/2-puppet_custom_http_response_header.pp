@@ -29,10 +29,15 @@ server {
 	listen [::]:80 default_server;
 
 	root /var/www/html;
-
 	index index.html index.htm index.nginx-debian.html;
 
 	add_header X-Served-By \$hostname;
+
+	error_page 404 /error404.html;
+	location = /error404.html {
+		root /var/www/html;
+		internal;
+	}
 
 	location /redirect_me {
 		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
