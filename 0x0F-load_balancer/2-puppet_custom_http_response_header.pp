@@ -21,6 +21,11 @@ mode    => '0755',
 content => 'Hello World!',
 }
 
+file {'/var/www/html/error404.html':
+mode    => '0755',
+content => "Ceci n'est pas une page",
+}
+
 exec { 'block server':
 path    => '/usr/bin',
 command => 'echo "
