@@ -2,4 +2,5 @@
 # Doing task 0 in a shorter form
 
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx restart
+sudo service nginx start
+sudo kill $(pgrep nginx | head -1)
