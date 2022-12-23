@@ -7,8 +7,8 @@ domain_info() {
 	if [ "$2" == 'web-01' ] || [ "$2" == 'web-02' ]
 	then 
 		sub_domain=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d '.' -f1 | tail -1)
-		record_type=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f4 | tail -1)
-		destination=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f5 | tail -1)
+		record_type=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f3 | tail -1)
+		destination=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f4 | tail -1)
 	else
 		sub_domain=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d '.' -f1 | tail -1)
 		record_type=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f4 | tail -1)
