@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Doing task 0 in a shorter form
-
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
 pkill -1 nginx
-#sudo kill "$(pgrep nginx | head -1)"
