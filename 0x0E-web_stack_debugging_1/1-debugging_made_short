@@ -3,4 +3,5 @@
 
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
-sudo kill "$(pgrep nginx | head -1)"
+pkill -1 nginx
+#sudo kill "$(pgrep nginx | head -1)"
