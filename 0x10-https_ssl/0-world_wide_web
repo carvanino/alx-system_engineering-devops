@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Prints out the configuration of a subdomain
+
+domain_info() {
+	cmd="dig $2.$1"
+
+	if [ "$2" == 'web-01' ] || [ "$2" == 'web-02' ]
+	then 
+		sub_domain=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d '.' -f1 | tail -1)
+		record_type=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f4 | tail -1)
+		destination=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f5 | tail -1)
+	else
+		sub_domain=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d '.' -f1 | tail -1)
+		record_type=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f4 | tail -1)
+		destination=$($cmd | grep -A1 'ANSWER SECTION:' | cut -d $'\t' -f5 | tail -1)
+	fi
+	echo "$sub_domain $record_type $destination" | awk '{print "The subdomain", $1, "is a",$2, "record and points to", $3}'
+}
+
+if [ $# == 1 ]
+then
+	domain_info "$1" "www"
+	domain_info "$1" "lb-01"
+	domain_info "$1" "web-01"
+	domain_info "$1" "web-02"
+fi
+
+if [ $# == 2 ]
+then
+	domain_info "$1" "$2"
+fi
