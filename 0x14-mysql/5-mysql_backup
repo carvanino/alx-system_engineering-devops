@@ -2,9 +2,5 @@
 # Generates a MYSQL dump file and creates a compressed archive out of it
 
 archive=$(date +%d-%m-%Y).tar.gz
-
 mysqldump -A -u root -p "$1" > backup.sql
-
-touch "$archive"
-
 tar -cvzf "$archive" backup.sql
