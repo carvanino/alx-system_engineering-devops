@@ -3,7 +3,7 @@
 
 archive=$(date +%d-%m-%Y).tar.gz
 
-sudo mysqldump -A -u root -p "$1" | sudo tee backup.sql
+mysqldump -A -u root -p "$1" > backup.sql
 
 touch "$archive"
 
