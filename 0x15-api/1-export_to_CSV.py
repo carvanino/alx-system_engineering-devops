@@ -23,7 +23,7 @@ if __name__ == '__main__':
     for todo in todos:
         row = []
         row.append(user.get('id'))
-        row.append(user.get('name'))
+        row.append(user.get('username'))
         row.append(todo.get('completed'))
         row.append(todo.get('title'))
         rows.append(row)
