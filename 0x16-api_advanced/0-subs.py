@@ -17,7 +17,7 @@ def number_of_subscribers(subreddit):
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) \
                     # Gecko/20100101 Firefox/88.0'
     }
-    sub_reddit = requests.get(url, headers=headers)
+    sub_reddit = requests.get(url, headers=headers, allow_redirects=False)
     if sub_reddit.status_code != 200:
         return 0
     subcribers = requests.get(
