@@ -4,7 +4,6 @@ API request to get list of all hot artcles by titles
 """
 
 import requests
-import sys
 
 
 def recurse(subreddit, hot_list=[], after='', count=0):
