@@ -14,21 +14,21 @@ def recurse(subreddit, hot_list=[], after='', count=0):
 
     url = 'https://api.reddit.com/r/{}/hot/'.format(subreddit)
     headers = {
-            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) \
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) \
                     Gecko/20100101 Firefox/88.0'
-            }
+    }
     params = {
-            'after': after,
-            'count': count
-            }
+        'after': after,
+        'count': count
+    }
 
     sub_reddit = requests.get(
-            url, headers=headers, allow_redirects=False, params=params)
+        url, headers=headers, allow_redirects=False, params=params)
     if sub_reddit.status_code != 200:
         return print(None)
     data = sub_reddit.json().get('data')
     after = data.get('after')
-    count = data.get('dist')
+    count += data.get('dist')
     children = data.get('children')
     # print(len(children))
     if after is not None:
