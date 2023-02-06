@@ -24,7 +24,7 @@ def recurse(subreddit, hot_list=[], after='', count=0):
     sub_reddit = requests.get(
         url, headers=headers, allow_redirects=False, params=params)
     if sub_reddit.status_code != 200:
-        return print(None)
+        return None
     data = sub_reddit.json().get('data')
     after = data.get('after')
     count += data.get('dist')
