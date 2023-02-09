@@ -34,7 +34,7 @@ server {
                 proxy_pass http://localhost:5001/number_odd_or_even/$1;
         }
 
-        location /api/ {
+        location /api {
                 proxy_pass http://localhost:5002/api/;
         }	
 }
