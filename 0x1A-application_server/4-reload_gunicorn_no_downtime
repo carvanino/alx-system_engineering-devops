@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Gracefully reload gunicorn
+
+pid=$(pgrep gunicorn)
+
+kill -HUP $pid
