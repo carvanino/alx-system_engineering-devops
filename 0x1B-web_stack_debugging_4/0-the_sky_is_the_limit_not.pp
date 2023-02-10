@@ -1,7 +1,7 @@
 # Increases Nginx file descriptor limit
 
 exec {'Increase limit':
-path    => 'usr/bin',
+path    => '/usr/local/bin/:/bin/',
 command => 'sed -i s/15/4096/g /etc/default/nginx',
 }
 
