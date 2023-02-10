@@ -1,18 +1,27 @@
 # Increases Nginx file descriptor limit
 
+$file_to_edit = '/etc/nginx/nginx.conf'
 
-exec { 'Set worker processes to auto':
-  command => 'sed -i 2s/4/auto/ /etc/nginx/nginx.conf',
-  path    => '/usr/local/bin/:/bin/',
+
+exec { 'change_line_in_file':
+  command => "sed -i '2s/4/auto/' ${file_to_edit}",
+  path    => ['/bin','/usr/bin'],
+  notify  => Exec['nginx_restart']
 }
 
 
-exec {'Increase limit':
-path    => '/usr/local/bin/:/bin/',
-command => 'sed -i s/15/4096/g /etc/default/nginx',
+
+$file_to_edit_ = '/etc/default/nginx'
+
+
+exec { 'change_line_in':
+  command => "sed -i '5s/15/4096/' ${file_to_edit_}",
+  path    => ['/bin','/usr/bin'],
+  notify  => Exec['nginx_restart']
 }
 
-exec {'restart Nginx':
-path    => '/usr/bin',
-command => 'sudo service nginx restart',
+exec { 'nginx_restart':
+  command     => 'service nginx restart',
+  path        => '/usr/bin:/usr/sbin:/bin:/sbin',
+  refreshonly => true,
 }
